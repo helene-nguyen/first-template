@@ -31,7 +31,7 @@ const template = {
         'header-txt',
         'header-txt'
     ],
-    //! Add info tile here
+    //! Add info title here
     headerTxt: [
         'title-handwriting',
         'header-txt',
@@ -57,6 +57,7 @@ const template = {
         headerCreate.appendChild(h1Create);
 
         this.pHeader(headerCreate);
+        this.createToggleBtn(headerCreate);
     },
     //~create p header
     pHeader: function (parent) {
@@ -104,5 +105,25 @@ const template = {
 
             parentOf.appendChild(aCreate);
         }
+    },
+    //~dark mode
+    darkMode: function () {
+        //create btn
+        //event .checked
+    },
+    //~create toggle button
+    createToggleBtn: function (parent) {
+        let createLabel = document.createElement('label');
+        createLabel.classList.add('switch');
+        parent.insertAdjacentElement('afterbegin', createLabel);
+
+        let inputCheckBox = document.createElement('input');
+        inputCheckBox.setAttribute('type', 'checkbox');
+        createLabel.appendChild(inputCheckBox);
+
+        let slider = document.createElement('span');
+        slider.classList.add('slider','round');
+        createLabel.appendChild(slider);
     }
+
 }
