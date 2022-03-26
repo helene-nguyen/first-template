@@ -2,9 +2,6 @@
 
 /*~VARIABLES*/
 :root {
-    /*cols and row*/
-    --grid-cols: 1;
-    --grid-rows: 1;
     /*color*/
     --light-grey: #DDD;
     --black: #000;
@@ -13,6 +10,7 @@
     --black: #000;
     --dark-grey: #1F1E1E;
     --clear-grey: #555555;
+    --dark-green: #203239;
     /*font*/
     --font-quicksand: 'Quicksand', sans-serif;
     --font-NYCD: 'Nothing You Could Do', cursive, sans-serif;
@@ -37,15 +35,16 @@ a {
     display: flex;
     flex-direction: column;
     /* box-model */
-
-
 }
+
+
 
 /*^ HEADER */
 header {
     /* display */
     text-align: center;
     margin: 0 auto;
+    padding: 0 1em;
 }
 
 .title {
@@ -87,7 +86,6 @@ header {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background-color: var(--clear-cream);
     position: relative;
     top: 2em;
     width: 100%;
@@ -151,8 +149,8 @@ a:hover {
     text-align: center;
     line-height: 70px;
     background-color: var(--dark-grey);
-    -webkit-transition: all 1.2s ease;
-    transition: all 1.2s ease;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
     /*box-model*/
     padding: 0 18px;
 }
@@ -206,18 +204,75 @@ a:hover {
     transform: scale(1);
 }
 
+
 .dark-mode {
     /* display */
     background-color: var(--dark-grey);
     color: var(--clear-cream);
+    transition: all 0.4s;
+}
+
+.switch {
+    position: relative;
+    display: block;
+    width: 2.75em;
+    height: 1.55em;
+    margin: 1em auto 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-grey);
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.25em;
+    width: 1.25em;
+    left: 0.20em;
+    bottom: 0.15em;
+    background-color: var(--white);
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--dark-green);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--dark-green);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(1.1em);
+    -ms-transform: translateX(1.1em);
+    transform: translateX(1.1em);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 2em;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 
 /*~MEDIA QUERIES*/
-@media print {
+@media print {}
 
-}
-
-@media screen and (max-width : 720px) {
-
-}
+@media screen and (max-width : 720px) {}

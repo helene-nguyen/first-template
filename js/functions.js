@@ -4,7 +4,11 @@ var echo = "Do you hear me ? 🌻";
 
 const template = {
     //^VARIABLES
+    body: document.querySelector('body'),
     container: document.querySelector('#container'),
+    style: getComputedStyle(document.body),
+    h1title: "My beautiful",
+    shareBtnTxt: "Share",
     //~social media
     social: [{
             url: `url('https://github.com/helene-nguyen')`
@@ -53,7 +57,7 @@ const template = {
 
         let h1Create = document.createElement('h1');
         h1Create.classList.add('title');
-        h1Create.textContent = "My beautiful";
+        h1Create.textContent = this.h1title;
         headerCreate.appendChild(h1Create);
 
         this.pHeader(headerCreate);
@@ -85,7 +89,7 @@ const template = {
 
         let spanIconTxt = document.createElement('span');
         spanIconTxt.classList.add('icon-txt');
-        spanIconTxt.textContent = "Share"
+        spanIconTxt.textContent = this.shareBtnTxt;
         btnWrap.appendChild(spanIconTxt);
 
         let icons = document.createElement('div');
@@ -106,12 +110,7 @@ const template = {
             parentOf.appendChild(aCreate);
         }
     },
-    //~dark mode
-    darkMode: function () {
-        //create btn
-        //event .checked
-    },
-    //~create toggle button
+    //~create dark mode button
     createToggleBtn: function (parent) {
         let createLabel = document.createElement('label');
         createLabel.classList.add('switch');
@@ -122,8 +121,25 @@ const template = {
         createLabel.appendChild(inputCheckBox);
 
         let slider = document.createElement('span');
-        slider.classList.add('slider','round');
+        slider.classList.add('slider', 'round');
         createLabel.appendChild(slider);
-    }
 
+        inputCheckBox.addEventListener('click', (event) => {
+            template.body.classList.toggle('dark-mode');
+
+            this.shareBtnDark();
+        })
+    },
+    //~change btn share dark mode
+    shareBtnDark: function () {
+        let shareBtn = document.querySelector('.icon-txt');
+
+        if (this.body.classList.contains('dark-mode')) {
+            shareBtn.style.backgroundColor = "#FFF";
+            shareBtn.style.color = "#1F1E1E";
+        } else {
+            shareBtn.style.backgroundColor = "#1F1E1E";
+            shareBtn.style.color = "#FFF";
+        }
+    }
 }
